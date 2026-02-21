@@ -36,12 +36,10 @@ for znach in contacts_list:
         fio_list.append(cleaned_phones)
     else:
         fio_list.append('')
-    print(cleaned_phones)
     if znach[6] != "":
         fio_list.append(znach[6])
     else:
         fio_list.append('')
-    print(fio_list)
     if len(zap_kniga) == 0:
         zap_kniga.append(fio_list)
     else:
@@ -63,7 +61,7 @@ for znach in contacts_list:
 
 # TODO 2: сохраните получившиеся данные в другой файл
 # код для записи файла в формате CSV
-with open("phonebook.csv", "w", encoding="utf-8") as f:
+with open("phonebook.csv", "w", newline='', encoding="utf-8") as f:
   datawriter = csv.writer(f, delimiter=',')
   # Вместо contacts_list подставьте свой список
   datawriter.writerows(zap_kniga)

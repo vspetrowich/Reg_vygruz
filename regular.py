@@ -26,9 +26,7 @@ for znach in contacts_list:
         fio_list.append(znach[4])
     else:
         fio_list.append('')
-    phone_pattern = r"""
-    (\+7|8)\s*[(]?(\d{3})[)]?\s*[-]?(\d{3})[-]?(\d{2})[-]?(\d{2})[-]?\s*[(]?[а-я.]?[а-я.]?[а-я.]?[а-я.]?\s*(\d{4})?[)]?
-    """
+    phone_pattern = r"(\+7|8)\s*[(]?(\d{3})[)]?\s*[-]?(\d{3})[-]?(\d{2})[-]?(\d{2})\s*[(]?[а-я.]?[а-я.]?[а-я.]?[а-я.]?\s*(\d{4})?[)]?"
     if znach[5].find('доб') != -1:
         replacement_pattern = r"+7(\2)\3-\4-\5 доб.\6"
     else:
@@ -38,11 +36,12 @@ for znach in contacts_list:
         fio_list.append(cleaned_phones)
     else:
         fio_list.append('')
+    print(cleaned_phones)
     if znach[6] != "":
         fio_list.append(znach[6])
     else:
         fio_list.append('')
-
+    print(fio_list)
     if len(zap_kniga) == 0:
         zap_kniga.append(fio_list)
     else:

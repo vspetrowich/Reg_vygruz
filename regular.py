@@ -7,6 +7,9 @@ with open("phonebook_raw.csv", encoding="utf-8") as f:
   contacts_list = list(rows)
 #pprint(contacts_list)
 
+# TODO 1: выполните пункты 1-3 ДЗ
+# ваш код
+
 zap_kniga = []
 
 for znach in contacts_list:
@@ -18,15 +21,14 @@ for znach in contacts_list:
     fio_list = fio.split(" ")
     if len(fio_list) == 2:
         fio_list.append('')
-    #print(fio_list)
     fio_list.append(znach[3])
-    #print(fio_list)
     if znach[4] != "":
         fio_list.append(znach[4])
     else:
         fio_list.append('')
-    #print(fio_list)
-    phone_pattern = r"(\+7|8)\s*[(]?(\d{3})[)]?\s*[-]?(\d{3})[-]?(\d{2})[-]?(\d{2})[-]?\s*[(]?[а-я.]?[а-я.]?[а-я.]?[а-я.]?\s*(\d{4})?[)]?"
+    phone_pattern = r"""
+    (\+7|8)\s*[(]?(\d{3})[)]?\s*[-]?(\d{3})[-]?(\d{2})[-]?(\d{2})[-]?\s*[(]?[а-я.]?[а-я.]?[а-я.]?[а-я.]?\s*(\d{4})?[)]?
+    """
     if znach[5].find('доб') != -1:
         replacement_pattern = r"+7(\2)\3-\4-\5 доб.\6"
     else:
@@ -40,8 +42,6 @@ for znach in contacts_list:
         fio_list.append(znach[6])
     else:
         fio_list.append('')
-
-    #print(fio_list)
 
     if len(zap_kniga) == 0:
         zap_kniga.append(fio_list)
@@ -59,17 +59,6 @@ for znach in contacts_list:
             count += 1
             if len(zap_kniga) ==  count:
                 zap_kniga.append(fio_list)
-
-
-
-            #print(zap_kniga[count][5])
-            #print(zap_kniga[count][6])
-
-
-#pprint(zap_kniga)
-
-# TODO 1: выполните пункты 1-3 ДЗ
-# ваш код
 
 # TODO 2: сохраните получившиеся данные в другой файл
 # код для записи файла в формате CSV

@@ -51,6 +51,8 @@ for znach in contacts_list:
             #print(id)
             #print(zap_kniga[count][0])
             if id[0] == fio_list[0] and id[1] == fio_list[1]:
+                if id[4] == '':
+                    zap_kniga[count][4] = fio_list[4]
                 if id[5] == '':
                     zap_kniga[count][5] = fio_list[5]
                 if id[6] == '':
